@@ -41,7 +41,7 @@ export const metadata: Metadata = {
       "Nikmati liburan keluarga di Gading Splash Water / Gading Paradise Kebumen. Bermain air, menikmati kolam renang, menjelajahi miniatur dunia, taman bermain, dan berbagai spot foto menarik di Pejagoan.",
     images: [
       {
-        url: `${baseUrl}/images/og-image.jpg`,
+        url: "https://raw.githubusercontent.com/Qriz-art/gudang/main/assets/gading.jpg",
         width: 1200,
         height: 630,
         alt: "Gading Splash Water - Water Park & Gading Paradise Kebumen",
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     title: "Gading Splash Water | Water Park & Gading Paradise Kebumen",
     description:
       "Nikmati liburan keluarga di Gading Splash Water / Gading Paradise Kebumen.",
-    images: [`${baseUrl}/images/og-image.jpg`],
+    images: ["https://raw.githubusercontent.com/Qriz-art/gudang/main/assets/gading.jpg"],
   },
   robots: {
     index: true,
