@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Waves, MapPin, Navigation } from "lucide-react";
 import { siteData, navMenus } from "@/lib/data";
 
@@ -36,12 +37,12 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {navMenus.map((menu) => (
                 <li key={menu.href}>
-                  <a
+                  <Link
                     href={menu.href}
                     className="text-gray-400 text-sm hover:text-aqua-400 transition-colors"
                   >
                     {menu.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

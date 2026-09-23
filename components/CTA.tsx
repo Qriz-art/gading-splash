@@ -1,13 +1,27 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { MapPin, Sparkles } from "lucide-react";
 
+// Nilai pseudo-random dengan seed tetap agar render server dan client sama
+// (menghindari hydration mismatch).
+function seededRandom(seed: number) {
+  const x = Math.sin(seed + 1) * 10000;
+  return x - Math.floor(x);
+}
+
+// React SSR memotong angka CSS ke 4 desimal, jadi nilainya dibulatkan dulu agar
+// atribut style hasil server dan client identik.
+function round(value: number, decimals = 2) {
+  return Number(value.toFixed(decimals));
+}
+
 const bubbles = Array.from({ length: 8 }, (_, i) => ({
   id: i,
-  size: Math.random() * 16 + 6,
-  left: Math.random() * 100,
-  delay: Math.random() * 4,
+  size: round(seededRandom(i) * 16 + 6),
+  left: round(seededRandom(i + 10) * 100),
+  delay: round(seededRandom(i + 20) * 4),
 }));
 
 export default function CTA() {
@@ -68,20 +82,20 @@ export default function CTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="#tiket"
+            <Link
+              href="/tiket"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-aqua-700 font-bold text-base shadow-xl hover:bg-white/90 hover:scale-105 transition-all duration-300"
             >
               <Sparkles className="w-5 h-5" />
               Rencanakan Kunjungan
-            </a>
-            <a
-              href="#lokasi"
+            </Link>
+            <Link
+              href="/kontak"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white font-semibold text-base hover:bg-white/25 transition-all duration-300"
             >
               <MapPin className="w-5 h-5" />
               Lihat Lokasi
-            </a>
+            </Link>
           </div>
         </motion.div>
       </div>

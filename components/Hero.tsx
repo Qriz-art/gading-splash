@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ChevronDown, MapPin, Star } from "lucide-react";
 import { siteData } from "@/lib/data";
@@ -11,12 +11,18 @@ function seededRandom(seed: number) {
   return x - Math.floor(x);
 }
 
+// Nilai harus dibulatkan: React SSR memotong angka CSS ke 4 desimal sehingga
+// angka pecahan panjang membuat atribut style server dan client berbeda.
+function round(value: number, decimals = 2) {
+  return Number(value.toFixed(decimals));
+}
+
 const floatingBubbles = Array.from({ length: 15 }, (_, i) => ({
   id: i,
-  size: seededRandom(i) * 20 + 8,
-  left: seededRandom(i + 15) * 100,
-  delay: seededRandom(i + 30) * 5,
-  duration: seededRandom(i + 45) * 6 + 8,
+  size: round(seededRandom(i) * 20 + 8),
+  left: round(seededRandom(i + 15) * 100),
+  delay: round(seededRandom(i + 30) * 5),
+  duration: round(seededRandom(i + 45) * 6 + 8),
 }));
 
 const fadeUp = {
@@ -150,19 +156,19 @@ export default function Hero() {
             animate="visible"
             className="flex flex-col sm:flex-row gap-4"
           >
-            <a
-              href="#tentang"
+            <Link
+              href="/wahana"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-aqua-500 to-tropical-500 text-white font-bold text-base shadow-xl shadow-aqua-500/30 hover:shadow-aqua-500/50 hover:scale-105 transition-all duration-300"
             >
               Jelajahi Gading Paradise
-            </a>
-            <a
-              href="#lokasi"
+            </Link>
+            <Link
+              href="/kontak"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white font-semibold text-base hover:bg-white/25 transition-all duration-300"
             >
               <MapPin className="w-5 h-5" />
               Lihat Lokasi
-            </a>
+            </Link>
           </motion.div>
         </div>
       </div>

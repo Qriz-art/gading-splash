@@ -17,16 +17,16 @@ export const siteData = {
   priceNote: "Harga tiket dapat berbeda berdasarkan hari, usia, atau kebijakan pengelola. Silakan konfirmasi sebelum berkunjung.",
   ticketPrice: "Rp9.000",
   copyright: "© 2026 Gading Splash Water / Gading Paradise. All rights reserved.",
+  baseUrl: "https://gadingsplash.com",
 };
 
 export const navMenus = [
-  { label: "Beranda", href: "#beranda" },
-  { label: "Tentang", href: "#tentang" },
-  { label: "Wahana", href: "#wahana" },
-  { label: "Galeri", href: "#galeri" },
-  { label: "Fasilitas", href: "#fasilitas" },
-  { label: "Ulasan", href: "#ulasan" },
-  { label: "Lokasi", href: "#lokasi" },
+  { label: "Beranda", href: "/" },
+  { label: "Tentang", href: "/tentang" },
+  { label: "Wahana", href: "/wahana" },
+  { label: "Galeri", href: "/galeri" },
+  { label: "Tiket", href: "/tiket" },
+  { label: "Lokasi", href: "/kontak" },
 ];
 
 export const quickInfoCards = [

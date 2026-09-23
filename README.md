@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gading Splash Water — Website
 
-## Getting Started
+Website profil destinasi wisata **Gading Splash Water / Gading Paradise** di Pejagoan, Kabupaten Kebumen, Jawa Tengah.
 
-First, run the development server:
+Dibangun dengan [Next.js](https://nextjs.org) (App Router), TypeScript, Tailwind CSS v4, Framer Motion, dan Lucide Icons.
+
+## Struktur Halaman (Multi Page)
+
+| Route      | Isi                                                          |
+| ---------- | ------------------------------------------------------------ |
+| `/`        | Beranda — hero, quick info, cuplikan wahana & galeri         |
+| `/tentang` | Tentang destinasi + cuplikan ulasan pengunjung               |
+| `/wahana`  | Wahana & atraksi (water park, kolam, miniature world)        |
+| `/galeri`  | Galeri foto lengkap dengan lightbox                          |
+| `/tiket`   | Harga tiket masuk + fasilitas                                |
+| `/kontak`  | Lokasi, peta, jam operasional                                |
+
+`Navbar` dan `Footer` dipasang sekali di `app/layout.tsx` sehingga dipakai oleh semua halaman. Navbar otomatis transparan saat berada di atas header halaman, lalu berubah menjadi solid ketika di-scroll.
+
+## Menjalankan
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Skrip
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev     # development server
+npm run build   # production build
+npm run start   # menjalankan hasil build
+npm run lint    # ESLint
+```
 
-## Learn More
+## Konfigurasi Konten
 
-To learn more about Next.js, take a look at the following resources:
+Data utama situs (nama, alamat, jam operasional, harga tiket, daftar menu, fasilitas, ulasan) terpusat di `lib/data.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `siteData.baseUrl` dipakai untuk metadata, canonical URL, sitemap, dan Open Graph.
+- Ganti gambar di `public/images/`. Gambar Open Graph memakai `public/images/og-image.jpg` (1200×630).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## SEO
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Metadata per halaman (`app/*/page.tsx`) beserta canonical URL.
+- JSON-LD `TouristAttraction` di `app/layout.tsx`.
+- `app/sitemap.ts` dan `app/robots.ts` otomatis menghasilkan `/sitemap.xml` dan `/robots.txt`.

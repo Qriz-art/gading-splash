@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { Ticket, Info } from "lucide-react";
 import { siteData } from "@/lib/data";
@@ -71,9 +72,12 @@ export default function TicketSection() {
                 </div>
               </div>
 
-              <button className="w-full py-4 rounded-2xl bg-white text-aqua-600 font-bold text-base hover:bg-white/90 transition-colors shadow-lg">
+              <Link
+                href="/kontak"
+                className="block w-full text-center py-4 rounded-2xl bg-white text-aqua-600 font-bold text-base hover:bg-white/90 transition-colors shadow-lg"
+              >
                 Tanya Harga Tiket
-              </button>
+              </Link>
             </div>
           </div>
 

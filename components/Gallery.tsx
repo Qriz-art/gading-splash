@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ZoomIn } from "lucide-react";
+import { X, ZoomIn, ArrowRight } from "lucide-react";
 import { galleryImages } from "@/lib/data";
 
-export default function Gallery() {
+type GalleryProps = {
+  /** Tampilkan hanya beberapa foto sebagai cuplikan di beranda. */
+  preview?: boolean;
+};
+
+export default function Gallery({ preview = false }: GalleryProps) {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const images = preview ? galleryImages.slice(0, 3) : galleryImages;
 
   return (
     <section id="galeri" className="py-20 lg:py-28 bg-gray-50">
@@ -30,7 +37,7 @@ export default function Gallery() {
 
         {/* Masonry Grid */}
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
-          {galleryImages.map((img, i) => (
+          {images.map((img, i) => (
             <motion.div
               key={img.src}
               initial={{ opacity: 0, y: 30 }}
@@ -56,6 +63,18 @@ export default function Gallery() {
             </motion.div>
           ))}
         </div>
+
+        {preview && (
+          <div className="text-center mt-12">
+            <Link
+              href="/galeri"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-aqua-500 to-tropical-500 text-white font-bold text-base shadow-lg shadow-aqua-500/20 hover:shadow-aqua-500/40 hover:scale-105 transition-all duration-300"
+            >
+              Lihat Semua Foto
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}
